@@ -1,0 +1,72 @@
+const aula = {
+
+     
+     curso:{
+        codigo = '101',
+        nombre = 'aula de clases',
+        piso = 1
+     },
+
+     curso:{
+        codigo = '102',
+        nombre = 'laboratorio de redes',
+        piso = 1
+     },
+
+     curso:{
+        codigo = '103',
+        nombre = 'aula de clases',
+        piso = 1
+     },
+
+     curso:{
+        codigo = '104',
+        nombre = 'laboratorio de electronica',
+        piso = 1
+     },
+
+     curso:{
+        codigo = '201',
+        nombre = 'laboratorio de sistemas operativos'
+        piso = 2
+     },
+
+     curso:{
+        codigo = '202',
+        nombre = 'laboratorio de bases de datos'
+        piso = 2
+     },
+
+     curso:{
+        codigo = '203',
+        nombre = 'laboratorio de programacion'
+        piso = 2
+     },
+
+     curso:{
+        codigo = '206',
+        nombre = 'aula de clases'
+        piso = 2
+     },
+
+     curso:{
+        codigo = '207',
+        nombre = 'aula de clases'
+        piso = 2
+     },
+
+     curso:{
+        codigo = '301',
+        nombre = 'aula de clases'
+        piso = 3
+     }
+
+       
+};
+
+                      
+
+
+
+
+aula atributos: Codigo, nombre, piso 
