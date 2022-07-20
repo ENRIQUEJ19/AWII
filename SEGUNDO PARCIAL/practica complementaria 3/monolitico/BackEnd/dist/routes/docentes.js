@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Docentes = void 0;
+const express_1 = require("express");
+const express_validator_1 = require("express-validator");
+const controllers_1 = require("../controllers");
+const { obtenerDocentes, obtenerDocente, crearDocente, actualizarDocente, borrarDocente } = controllers_1.Docentes;
+const middlewares_1 = require("../middlewares");
+const router = (0, express_1.Router)();
+exports.Docentes = router;
+router.get('/', middlewares_1.verificarToken, obtenerDocentes);
+router.get('/:id', (0, express_validator_1.check)('id', 'El id del docente no es válido').isMongoId(), middlewares_1.verificarToken, middlewares_1.validarCampos, obtenerDocente);
+router.post('/', (0, express_validator_1.check)('nombredocente', 'El nombre es requerido').notEmpty().isAlpha('es-ES', { ignore: ' ' }), (0, express_validator_1.check)('apellidodocente', 'El apellido es requerido').notEmpty().isAlpha('es-ES', { ignore: ' ' }), middlewares_1.verificarToken, middlewares_1.validarCampos, crearDocente);
+router.put('/:id', (0, express_validator_1.check)('id', 'El id del docente no es válido').isMongoId(), middlewares_1.verificarToken, middlewares_1.validarCampos, actualizarDocente);
+router.delete('/:id', (0, express_validator_1.check)('id', 'El id del docente no es válido').isMongoId(), middlewares_1.verificarToken, middlewares_1.validarCampos, borrarDocente);

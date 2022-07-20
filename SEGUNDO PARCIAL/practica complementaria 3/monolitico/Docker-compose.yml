@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  monolitico:
+    build: ./BackEnd
+    restart: always
+    environment:
+      - db=mongodb://dbMonolitico/Horario
+    depends_on:
+      - dbMonolitico
+    volumes:
+      - ./BackEnd:/usr/src/app
+
+  usuarios:
+    build: ./Microservicios/usuarios
+    environment:
+      - db=mongodb://dbUsuarios/Usuarios
+    depends_on:
+      - dbUsuarios
+    volumes:
+      - ./Microservicios/usuarios:/usr/src/app
+
+
+  dbUsuarios:
+    image: mongo
+    restart: always
+    command: --quiet --logpath /dev/null
+  dbMonolitico:
+    image: mongo
+    restart: always
+    command: --quiet --logpath /dev/null
+
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - usuarios
+      - monolitico

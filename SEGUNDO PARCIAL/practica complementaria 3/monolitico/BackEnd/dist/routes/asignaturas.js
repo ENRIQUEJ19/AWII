@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Asignatura = void 0;
+const express_1 = require("express");
+const express_validator_1 = require("express-validator");
+const controllers_1 = require("../controllers");
+const { obtenerAsignaturas, obtenerAsignatura, crearAsignatura, actualizarAsignatura, borrarAsignatura } = controllers_1.Asignatura;
+const middlewares_1 = require("../middlewares");
+const router = (0, express_1.Router)();
+exports.Asignatura = router;
+router.get('/', middlewares_1.verificarToken, obtenerAsignaturas);
+router.get('/:id', (0, express_validator_1.check)('id', 'El id no es válido').isMongoId(), middlewares_1.validarCampos, obtenerAsignatura);
+router.post('/', (0, express_validator_1.check)('nombreMateria', 'El nombre de la asignatura es requerido').notEmpty(), (0, express_validator_1.check)('codigo', 'El codigo de la asignatura es requerido').notEmpty().isAlphanumeric(), middlewares_1.verificarToken, middlewares_1.validarCampos, crearAsignatura);
+router.put('/:id', (0, express_validator_1.check)('id', 'El id no es válido').isMongoId(), middlewares_1.verificarToken, middlewares_1.validarCampos, actualizarAsignatura);
+router.delete('/:id', (0, express_validator_1.check)('id', 'El id no es válido').isMongoId(), middlewares_1.verificarToken, middlewares_1.validarCampos, borrarAsignatura);

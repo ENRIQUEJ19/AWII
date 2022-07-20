@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Registro = void 0;
+const express_1 = require("express");
+const express_validator_1 = require("express-validator");
+const controllers_1 = require("./controllers");
+const middleware_1 = require("./middleware");
+const router = (0, express_1.Router)();
+exports.Registro = router;
+router.get('/', controllers_1.obtenerRegistros);
+router.get('/:id', (0, express_validator_1.check)('id', 'El id no es válido').isMongoId(), middleware_1.validarCampos, controllers_1.obtenerRegistro);
+router.post('/', (0, express_validator_1.check)('periodo', 'El nombre de usuario es requerido').notEmpty(), middleware_1.validarCampos, controllers_1.crearRegistro);
+router.put('/:id', (0, express_validator_1.check)('id', 'El id no es válido').isMongoId(), middleware_1.validarCampos, controllers_1.actualizarRegistro);
+router.delete('/:id', (0, express_validator_1.check)('id', 'El id no es válido').isMongoId(), middleware_1.validarCampos, controllers_1.borrarRegistro);

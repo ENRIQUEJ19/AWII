@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Aula = void 0;
+const express_1 = require("express");
+const express_validator_1 = require("express-validator");
+const controllers_1 = require("./controllers");
+const middleware_1 = require("./middleware");
+const router = (0, express_1.Router)();
+exports.Aula = router;
+router.get('/', controllers_1.consultarAulas);
+router.get('/:id', (0, express_validator_1.check)('id', 'El id no es válido').isMongoId(), middleware_1.validarCampos, controllers_1.consultarAula);
+router.post('/', (0, express_validator_1.check)('numeroDeAula', 'El  número del aula es requerido').notEmpty(), (0, express_validator_1.check)('tipo', 'El tipo de aula es requerido').notEmpty().isAlpha('es-ES', { ignore: ' ' }), (0, express_validator_1.check)('piso', 'El piso del aula es requerido').notEmpty().isNumeric(), middleware_1.validarCampos, controllers_1.crearAula);
+router.put('/:id', (0, express_validator_1.check)('id', 'El id no es válido').isMongoId(), middleware_1.validarCampos, controllers_1.actualizarAula);
+router.delete('/:id', (0, express_validator_1.check)('id', 'El id no es válido').isMongoId(), middleware_1.validarCampos, controllers_1.borrarAula);

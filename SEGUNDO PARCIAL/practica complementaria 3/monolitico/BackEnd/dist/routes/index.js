@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Aula = exports.Asignatura = exports.Docentes = exports.Registro = exports.DetalleHora = void 0;
+const detalleHora_1 = require("./detalleHora");
+Object.defineProperty(exports, "DetalleHora", { enumerable: true, get: function () { return detalleHora_1.DetalleHora; } });
+const registro_1 = require("./registro");
+Object.defineProperty(exports, "Registro", { enumerable: true, get: function () { return registro_1.Registro; } });
+const docentes_1 = require("./docentes");
+Object.defineProperty(exports, "Docentes", { enumerable: true, get: function () { return docentes_1.Docentes; } });
+const asignaturas_1 = require("./asignaturas");
+Object.defineProperty(exports, "Asignatura", { enumerable: true, get: function () { return asignaturas_1.Asignatura; } });
+const aulas_1 = require("./aulas");
+Object.defineProperty(exports, "Aula", { enumerable: true, get: function () { return aulas_1.Aula; } });
